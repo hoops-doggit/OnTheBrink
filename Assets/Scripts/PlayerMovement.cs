@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 rbVelocity;
     private RaycastHit mousePointRay;
     public GameObject lookTarget;
-    [SerializeField] Transform upperTorso;
     public float currentSpeed;
     //[SerializeField] Player_Exhaust gas;
     public bool strafing;
@@ -271,10 +270,10 @@ public class PlayerMovement : MonoBehaviour
             LayerMask lm = (1 << LayerMask.NameToLayer("ground"));
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, lm))
             {
-                lookTarget.transform.position = new Vector3(hit.point.x, upperTorso.position.y, hit.point.z);
+                lookTarget.transform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                 //facingDirection = hit.point;
             }
-            upperTorso.LookAt(lookTarget.transform);
+            transform.LookAt(lookTarget.transform);
         }
         
         switch (groundState)

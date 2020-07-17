@@ -9,6 +9,7 @@ public class ContainerOfEverything : MonoBehaviour
     public GameObject player;
     [SerializeField] GameObject gameCam;
     private Camera gameCamCamera;
+    public GameObject mousePointTransform;
 
     private Vector3 mousePointInWorld;
 
@@ -22,7 +23,7 @@ public class ContainerOfEverything : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -41,23 +42,21 @@ public class ContainerOfEverything : MonoBehaviour
             return gameCam;
         }
 
-        else return null;        
+        else return null;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        Event currentEvent = Event.current;
-        Vector2 mousePos = new Vector2();
 
-        // Get the mouse position from Event.
-        // Note that the y position from Event is inverted.
-        mousePos.x = currentEvent.mousePosition.x;
-        mousePos.y = gameCamCamera.pixelHeight - currentEvent.mousePosition.y;
+        Vector2 mousePos = Input.mousePosition;
 
         mousePointInWorld = gameCamCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, gameCamCamera.nearClipPlane));
 
+        mousePointTransform.transform.position = mousePointInWorld;
+
     }
+
 
 }
