@@ -50,11 +50,19 @@ public class ContainerOfEverything : MonoBehaviour
     void Update()
     {
 
-        Vector2 mousePos = Input.mousePosition;
+        Vector3 mouse = Input.mousePosition;
 
-        mousePointInWorld = gameCamCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, gameCamCamera.nearClipPlane));
+        RaycastHit hit;
 
-        mousePointTransform.transform.position = mousePointInWorld;
+        Ray ray = gameCamCamera.ScreenPointToRay(mouse);
+
+        //LayerMask lm = (1 << LayerMask.NameToLayer("default"));
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            mousePointTransform.transform.position = hit.point;
+        }
+
 
     }
 

@@ -171,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
                         {
                             vel = vel.normalized * maxVelocity;
                         }
-                        //currentSpeed = vel.magnitude;
+                        currentSpeed = vel.magnitude;
                         rb.velocity = vel;
 
                     }
@@ -258,7 +258,7 @@ public class PlayerMovement : MonoBehaviour
         }        
 
         rbVelocity = rb.velocity;
-        //currentSpeed = rb.velocity.magnitude;
+        currentSpeed = rb.velocity.magnitude;
 
         if (canMove)
         {            

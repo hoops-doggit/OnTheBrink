@@ -59,9 +59,9 @@ public class Jump : MonoBehaviour
     IEnumerator LateFixedUpdate()
     {
         yield return new WaitForFixedUpdate();
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, heightHits[1].point.y + heightOffset, transform.position.y +1), transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, heightHits[0].point.y + heightOffset, transform.position.y ), transform.position.z);
 
-        if(transform.position.y == heightHits[1].point.y + heightOffset)
+        if(transform.position.y == heightHits[0].point.y + heightOffset)
         {
             grounded = true;
         }
@@ -157,18 +157,18 @@ public class Jump : MonoBehaviour
         }
         #endregion
 
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, heightHits[1].point.y + heightOffset, transform.position.y + 1), transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, heightHits[0].point.y + heightOffset, transform.position.y), transform.position.z);
 
-        if (transform.position.y <= heightHits[1].point.y + heightOffset + snapHeight)
+        if (transform.position.y <= heightHits[0].point.y + heightOffset + snapHeight)
         {
             if (jumpState == JumpStates.falling)
             {
                 Vector3 position = transform.position;
                 grounded = true;
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-                position.y = heightHits[1].point.y;
+                position.y = heightHits[0].point.y;
                 transform.position = position;
-                transform.up = heightHits[1].normal;
+                transform.up = heightHits[0].normal;
             }
         }
         else { grounded = false; }
