@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public enum JumpStates { first, second, third, fourth, falling, Else, shortJump}
+
 public class Jump : MonoBehaviour
 {
-    public JumpStates stJump;
+    public JumpStates jumpState;
+
     public float normalGravity;
     public float jumpStrength;
     public float fallMultiplier = 2.5f;
@@ -85,7 +88,7 @@ public class Jump : MonoBehaviour
                     rb.AddForce(Vector3.down * normalGravity *1.5f);
                 }
 
-                stJump = JumpStates.falling;
+                jumpState = JumpStates.falling;
             }
             else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) //if rising and you let go spacebar
             {
@@ -97,32 +100,32 @@ public class Jump : MonoBehaviour
                 {
                     rb.AddForce(Vector3.down * normalGravity * fallMultiplier * 0.2f);
                 }
-                stJump = JumpStates.shortJump;
+                jumpState = JumpStates.shortJump;
             }
             else if (rb.velocity.y > 0 && rb.velocity.y < 0.5f) //if rising and before you reach yspeed of 2
             {
                 rb.AddForce(Vector3.down * normalGravity * 0.05f);
-                stJump = JumpStates.second;
+                jumpState = JumpStates.second;
             }
             else if (rb.velocity.y > 0 && rb.velocity.y < 1) //if rising and before you reach yspeed of 2
             {
                 rb.AddForce(Vector3.down * normalGravity * 0.13f);
-                stJump = JumpStates.third;
+                jumpState = JumpStates.third;
             }
             else if (rb.velocity.y > 0 && rb.velocity.y < 2) //if rising and before you reach yspeed of 2
             {
                 rb.AddForce(Vector3.down * normalGravity * 0.2f);
-                stJump = JumpStates.second;
+                jumpState = JumpStates.second;
             }
             else if(rb.velocity.y > 2) //if rising and after you reach 2
             {
                 rb.AddForce(Vector3.down * normalGravity * 0.7f);
-                stJump = JumpStates.first;
+                jumpState = JumpStates.first;
             }
             else //every other time
             {
                 rb.AddForce(Vector3.down * normalGravity);
-                stJump = JumpStates.Else;
+                jumpState = JumpStates.Else;
             }
 
                   
@@ -131,8 +134,8 @@ public class Jump : MonoBehaviour
 
         if (grounded)
         {
-            gasParticles.localRotation = Quaternion.Euler(0, 180, 0);
-            stJump = JumpStates.Else;
+            //gasParticles.localRotation = Quaternion.Euler(0, 180, 0);
+            jumpState = JumpStates.Else;
 
         }
 
@@ -140,15 +143,15 @@ public class Jump : MonoBehaviour
         #region y clamp to stop ground penetration
         if (!grounded && rb.velocity.y < 0)
         {
-            if (Physics.Raycast(heightRays[1].position, heightRays[1].up * -1, out heightHits[1], restingHeight * 3f, mask))
+            if (Physics.Raycast(heightRays[0].position, heightRays[0].up * -1, out heightHits[0], restingHeight * 3f, mask))
             {
-                Debug.DrawRay(heightRays[1].position, heightRays[1].up * -1 * heightHits[1].distance, Color.yellow);
+                Debug.DrawRay(heightRays[0].position, heightRays[0].up * -1 * heightHits[0].distance, Color.yellow);
                 rayHit = true;
 
             }
             else
             {
-                Debug.DrawRay(heightRays[1].position, heightRays[1].up * -1 * restingHeight * 3f, Color.red);
+                Debug.DrawRay(heightRays[0].position, heightRays[0].up * -1 * restingHeight * 3f, Color.red);
                 rayHit = false;
             }
         }
@@ -158,7 +161,7 @@ public class Jump : MonoBehaviour
 
         if (transform.position.y <= heightHits[1].point.y + heightOffset + snapHeight)
         {
-            if (stJump == JumpStates.falling)
+            if (jumpState == JumpStates.falling)
             {
                 Vector3 position = transform.position;
                 grounded = true;
