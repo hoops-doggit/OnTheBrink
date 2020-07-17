@@ -10,7 +10,7 @@ public enum InputState { allowed, notAllowed }
 
 //use a scriptable object for states. That way I don't need to getComponent every frame
 
-public class Movement_Mouse : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public SpeedState speedState;
     public RelationshipToGround groundState;
