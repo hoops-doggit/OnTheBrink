@@ -27,19 +27,19 @@ public class HamsterAI : MonoBehaviour
     
     void Update()
     {
-        if(lookForTargetTimer == 0f)
+        if(lookForTargetTimer == 0f && myState == State.gototarget)
         {
             myState = State.lookfortarget;
             goToTargetTimer = 5f;
         }
-        if(goToTargetTimer == 0f)
+        if(goToTargetTimer == 0f && myState == State.lookfortarget)
         {
             myState = State.gototarget;
             int randSeed = Random.Range(1,4);
             lookForTargetTimer = 5f;
         }
-        goToTargetTimer -= Time.deltaTime;
-        lookForTargetTimer -= Time.deltaTime;
+        goToTargetTimer = Mathf.Max(0, goToTargetTimer - Time.deltaTime);
+        lookForTargetTimer = Mathf.Max(0, lookForTargetTimer - Time.deltaTime);
         rb.MovePosition(transform.position + ((transform.forward * HamSpeed) + (transform.up * HamBounce)) * Time.deltaTime);
         switch (myState)
         {
