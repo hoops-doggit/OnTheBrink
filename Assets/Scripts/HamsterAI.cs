@@ -16,58 +16,79 @@ public class HamsterAI : MonoBehaviour
     public float goToTargetTimer = 5f;  
     public Transform diamante;
     private State myState;
-    public Transform[] lurePoints;
+    public Vector3 lurePoint;
+    private Vector3 smoothDampVelocityREF;
+    private Transform lookTransform;
+    public float turnSpeed;
     
     void Awake()
-    {        
+    {
+        lookTransform = new GameObject().transform;
         myState = State.gototarget;
         rb = GetComponent<Rigidbody>();
         HamRotate = new Vector3(0, 100, 0);
+        lurePoint = LurePoint();
     }
-    
+
+    public Vector3 LurePoint()
+    {
+        Vector3 lureP = new Vector3
+        {
+            x = Random.Range(-17, 17),
+            y = 0,
+            z = Random.Range(-17, 17)
+        };
+        return lureP;
+    }
+
     void Update()
     {
-        if(lookForTargetTimer == 0f && myState == State.gototarget)
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PoopDiamond();
+        }
+
+        if (lookForTargetTimer == 0f && myState == State.gototarget)
         {
             myState = State.lookfortarget;
             goToTargetTimer = 5f;
         }
         if(goToTargetTimer == 0f && myState == State.lookfortarget)
         {
+            lurePoint = LurePoint();
             myState = State.gototarget;
-            int randSeed = Random.Range(1,4);
+            randSeed = Random.Range(1,4);
             lookForTargetTimer = 5f;
         }
         goToTargetTimer = Mathf.Max(0, goToTargetTimer - Time.deltaTime);
         lookForTargetTimer = Mathf.Max(0, lookForTargetTimer - Time.deltaTime);
         rb.MovePosition(transform.position + ((transform.forward * HamSpeed) + (transform.up * HamBounce)) * Time.deltaTime);
+
+        if (transform.position.y < -100)
+        {
+            DestroyHamster();
+        }
+
         switch (myState)
         {
             case State.gototarget:
                 // pick target
-                
-                transform.LookAt(lurePoints[randSeed]);
-                rb.AddRelativeForce(Vector3.forward * HamSpeed, ForceMode.Force);
+
+
+                rb.AddRelativeForce(Vector3.up * HamSpeed, ForceMode.Force);
+
                 // run to target
                 //rb.MovePosition(transform.position + ((transform.forward * HamSpeed) + (transform.up * HamBounce)) * Time.deltaTime);
                 break;
             case State.lookfortarget:
+                lookTransform.position = Vector3.SmoothDamp(lookTransform.position, lurePoint, ref smoothDampVelocityREF, turnSpeed);
+                transform.LookAt(lookTransform);
                 // rotate around
                 break;
             default:
                 break;
         }
-                
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            PoopDiamond();
-        }
-
-        if(transform.position.y < -100)
-        {
-            DestroyHamster();
-        }
-        
     }
     
     void PoopDiamond()

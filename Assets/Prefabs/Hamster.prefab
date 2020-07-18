@@ -178,7 +178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &167829565272200730
 Transform:
   m_ObjectHideFlags: 0
@@ -468,3 +468,8 @@ MonoBehaviour:
   HamBounce: 1
   HamRotate: {x: 0, y: 0, z: 0}
   isLured: 0
+  lookForTargetTimer: 5
+  goToTargetTimer: 5
+  diamante: {fileID: 0}
+  lurePoints: []
+  turnSpeed: 0

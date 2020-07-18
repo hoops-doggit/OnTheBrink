@@ -611,6 +611,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 167829565272200733, guid: 1e70e57ceea9d45388a38ad5d51ca384,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 167829566457645264, guid: 1e70e57ceea9d45388a38ad5d51ca384,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -707,6 +712,11 @@ PrefabInstance:
       propertyPath: lurePoints.Array.data[3]
       value: 
       objectReference: {fileID: 1448300205}
+    - target: {fileID: 167829566457645267, guid: 1e70e57ceea9d45388a38ad5d51ca384,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 167829566457645268, guid: 1e70e57ceea9d45388a38ad5d51ca384,
         type: 3}
       propertyPath: m_Name
