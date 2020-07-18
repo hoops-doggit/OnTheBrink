@@ -2056,8 +2056,8 @@ GameObject:
   - component: {fileID: 1229966879}
   - component: {fileID: 1229966878}
   m_Layer: 8
-  m_Name: Rock2
-  m_TagString: Untagged
+  m_Name: Grass
+  m_TagString: grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2070,7 +2070,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229966877}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2093,7 +2093,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 56f9755ada2694f97a235f890077eeab, type: 2}
+  - {fileID: 2100000, guid: e480c3c195c984e9f904d9ae7b24c322, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2130,7 +2130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229966877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.62, y: -0.04, z: 3.54}
+  m_LocalPosition: {x: 3.62, y: -0.04, z: 0.05}
   m_LocalScale: {x: 4, y: 1.3019, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
