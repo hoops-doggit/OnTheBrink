@@ -29,7 +29,6 @@ public class MonsterBehaviour : MonoBehaviour
         Debug.Log("animstop");
         an.enabled = false;
         an.speed = 0;
-
     }
 
     private void TurnOnLure()
