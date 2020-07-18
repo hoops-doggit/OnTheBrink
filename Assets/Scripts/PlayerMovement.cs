@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] Player_Exhaust gas;
     public bool strafing;
 
-    private Jump jumpScript;
+    // Jump jumpScript;
     //private GunControl _gc;
     private Camera gameCam;
 
@@ -44,11 +44,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         //lookTarget = new GameObject();
-        gameCam = ContainerOfEverything.instance.GameCam().GetComponent<Camera>();
         //_gc = GetComponent<GunControl>();
         //gas = GetComponent<Player_Exhaust>();
         rb = GetComponent<Rigidbody>();
-        jumpScript = GetComponent<Jump>();
+        //jumpScript = GetComponent<Jump>();
         down = KeyCode.S;
         up = KeyCode.W;
         left = KeyCode.A;
@@ -103,26 +102,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementInput.magnitude == 0)
         {
-            if (jumpScript.grounded)
-            {
-                //gas.RotateGasUp();
-                //gas.GasParticlesStop();
-            }
-            else
-            {
-                //gas.RotateGasDown();
-                //gas.GasParticlesStart();
-            }
+
         }
 
-        if (!jumpScript.grounded)
-        {
-            //gas.RotateGasDown();
-        }
-        else
-        {
-            //gas.RotateGasUp();
-        }
 
         if (facingDirection != Vector3.zero)
         {
@@ -163,27 +145,29 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (velocity.magnitude < maxVelocity)
                 {
-                    if (jumpScript.grounded)
-                    {
-                        Vector3 vel = new Vector3(Mathf.Clamp(groundedAcceleration.x, -maxVelocity, maxVelocity), rb.velocity.y, Mathf.Clamp(groundedAcceleration.z, -maxVelocity, maxVelocity));
+                    Vector3 vel = new Vector3(Mathf.Clamp(groundedAcceleration.x, -maxVelocity, maxVelocity), rb.velocity.y, Mathf.Clamp(groundedAcceleration.z, -maxVelocity, maxVelocity));
 
-                        if(vel.magnitude > maxVelocity)
-                        {
-                            vel = vel.normalized * maxVelocity;
-                        }
-                        currentSpeed = vel.magnitude;
-                        rb.velocity = vel;
-
-                    }
-                    else
+                    if (vel.magnitude > maxVelocity)
                     {
-                        Vector3 vel = new Vector3(Mathf.Clamp(airAcceleration.x, -maxVelocity, maxVelocity), rb.velocity.y, Mathf.Clamp(airAcceleration.z, -maxVelocity, maxVelocity));
-                        if (vel.magnitude > maxVelocity)
-                        {
-                            vel = vel.normalized * maxVelocity ;
-                        }
-                        rb.velocity = vel ;
+                        vel = vel.normalized * maxVelocity;
                     }
+                    currentSpeed = vel.magnitude;
+                    rb.velocity = vel;
+
+                    //if (jumpScript.grounded)
+                    //{
+
+
+                    //}
+                    //else
+                    //{
+                    //    Vector3 vel = new Vector3(Mathf.Clamp(airAcceleration.x, -maxVelocity, maxVelocity), rb.velocity.y, Mathf.Clamp(airAcceleration.z, -maxVelocity, maxVelocity));
+                    //    if (vel.magnitude > maxVelocity)
+                    //    {
+                    //        vel = vel.normalized * maxVelocity ;
+                    //    }
+                    //    rb.velocity = vel ;
+                    //}
                 }
             }
             else if (speedState == SpeedState.decelerating)
@@ -264,15 +248,7 @@ public class PlayerMovement : MonoBehaviour
         {            
             Movement(movementInput);
 
-            Vector3 mouse = Input.mousePosition;
-            RaycastHit hit;
-            Ray ray = gameCam.ScreenPointToRay(mouse);
-            LayerMask lm = (1 << LayerMask.NameToLayer("ground"));
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, lm))
-            {
-                lookTarget.transform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-                //facingDirection = hit.point;
-            }
+            lookTarget.transform.SetPositionAndRotation(MouseInput.instance.mousePointTransform.position, MouseInput.instance.mousePointTransform.rotation);
             transform.LookAt(lookTarget.transform);
         }
         
