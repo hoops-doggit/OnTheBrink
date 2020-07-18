@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     public void PlusOneToScore()
     {
         score++;
+        ContainerOfEverything.instance.scoreText.text = score.ToString();
     }
 
 }

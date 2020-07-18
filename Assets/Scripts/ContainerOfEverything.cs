@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class ContainerOfEverything : MonoBehaviour
@@ -8,6 +10,7 @@ public class ContainerOfEverything : MonoBehaviour
     public static ContainerOfEverything instance;
     public GameObject player;
     public GameObject gameCam;
+    public Text scoreText;
 
 
 
