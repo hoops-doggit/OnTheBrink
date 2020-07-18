@@ -75,8 +75,7 @@ public class CrookControll : MonoBehaviour
         currentlyWrangledHamp.AddComponent<HingeJoint>();
         HingeJoint hj = currentlyWrangledHamp.GetComponent<HingeJoint>();
         hj.connectedBody = rb;
-        //hj.autoConfigureConnectedAnchor = false;
-        //hj.connectedAnchor = crookedHingePosition.transform.position;
+        hj.anchor = Vector3.zero;
 
         currentlyWrangledHamp.layer = 10; //crookedHampster physics layer
 

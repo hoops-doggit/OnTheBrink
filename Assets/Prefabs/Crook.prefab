@@ -330,8 +330,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1155645663026320013}
   - component: {fileID: 1333228767}
-  - component: {fileID: 1333228766}
   - component: {fileID: 3163404320700536651}
+  - component: {fileID: 1297262496973204895}
   m_Layer: 11
   m_Name: Crook
   m_TagString: Untagged
@@ -373,19 +373,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 1
---- !u!135 &1333228766
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6362930434395038572}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.35
-  m_Center: {x: -0.32, y: 0, z: 1.65}
 --- !u!114 &3163404320700536651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,10 +385,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b129836c215d40558d8cd6e69b3f361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crook: {fileID: 6362930434395038572}
-  crookedHingePosition: {fileID: 4978075845818643916}
+  wrangling: 0
+  unWranglingCooldown: 0.2
   notUsingPose: {fileID: 0}
   readyPose: {fileID: 0}
   wrangledPose: {fileID: 0}
   currentlyWrangledHamp: {fileID: 0}
-  wrangling: 0
+  crook: {fileID: 6362930434395038572}
+  crookedHingePosition: {fileID: 4978075845818643916}
+--- !u!136 &1297262496973204895
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362930434395038572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.4, z: 1.5}
