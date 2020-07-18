@@ -62,6 +62,7 @@ public class CrookControll : MonoBehaviour
         {
             if (!wrangling)
             {
+                other.GetComponent<HamsterAI>().Wrangled();
                 CrookHampster(other.gameObject);
             }
 

@@ -92,7 +92,16 @@ public class PlayerMovement : MonoBehaviour
             horiz += 1;
         }
 
-        movementInput = new Vector3(horiz, 0, vert).normalized;
+
+
+
+        Vector3 tempV3 = new Vector3(horiz, 0, vert).normalized;
+        Vector3 camForward = Camera.main.gameObject.transform.forward;
+        camForward.y = 0;
+
+        movementInput = Quaternion.LookRotation(camForward) * tempV3;
+
+        //movementInput = new Vector3(horiz, 0, vert).normalized;
 
         if (movementInput.magnitude > 0)
         {             
