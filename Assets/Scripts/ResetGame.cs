@@ -7,9 +7,9 @@ public class ResetGame : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Delete))
+        if(Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("HamsterAI");
+            SceneManager.LoadScene("StartScreen");
         }
     }
 }

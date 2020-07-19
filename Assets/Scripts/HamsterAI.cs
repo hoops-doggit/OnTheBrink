@@ -77,10 +77,11 @@ public class HamsterAI : MonoBehaviour
             Debug.Log("I gone and done");
         }
 
-        // Manual poop
+// Manual poop or chill
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PoopDiamond();
+            //PoopDiamond();
+            //ChillPosition();
         }
 // State lured, but not dead (reset state)
         if (hungerTimer == 0f && myState == State.lured)
@@ -91,6 +92,7 @@ public class HamsterAI : MonoBehaviour
 // State hungry, but not lured        
         if (luredTimer == 0f && myState == State.hungry)
         {
+            PoopDiamond();
             anim.enabled = true;
             lurePoint = LurePoint();
             myState = State.lured;
@@ -108,13 +110,14 @@ public class HamsterAI : MonoBehaviour
         if (wrangledTimer == 0f && myState == State.wrangled)
         {
             myState = State.eating;
-            //BurstOfSpeed();
+            ChillPosition();
+            BurstOfSpeed();
             eatingTimer = 5f;
         }
 // State eating, but not bored        
         if (eatingTimer == 0f && myState == State.eating)
         {
-            PoopDiamond();
+            
             myState = State.bored;
             boredTimer = 7f;
         }
@@ -161,7 +164,7 @@ public class HamsterAI : MonoBehaviour
     
     void PoopDiamond()
     {
-        Instantiate(diamante, new Vector3(transform.position.x,transform.position.y+1,transform.position.z), Quaternion.identity);
+        Instantiate(diamante, new Vector3(transform.position.x+1.25f,transform.position.y+1,transform.position.z), Quaternion.identity);
     }
     
     void DestroyHamster()
@@ -193,5 +196,13 @@ public class HamsterAI : MonoBehaviour
     private void NormalSpeed()
     {
         this.HamSpeed = 3f;
+    }
+    
+    public void ChillPosition()
+    {
+        rb.velocity = new Vector3(0f,0f,0f); 
+        rb.angularVelocity = new Vector3(0f,0f,0f);
+        transform.rotation = Quaternion.Euler(new Vector3(0f,Random.Range(0f,360f),0f));
+         
     }
 }

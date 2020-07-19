@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentlyActiveLures: []
+  numberOfActiveLures: 0
 --- !u!1 &376912725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +1786,7 @@ PrefabInstance:
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.5100045
+      value: 7.379
       objectReference: {fileID: 0}
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
@@ -1795,7 +1796,7 @@ PrefabInstance:
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.877348
+      value: 3.975
       objectReference: {fileID: 0}
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
@@ -1805,7 +1806,7 @@ PrefabInstance:
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.39049006
+      value: -0.44838318
       objectReference: {fileID: 0}
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
@@ -1815,7 +1816,7 @@ PrefabInstance:
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92060715
+      value: 0.89384145
       objectReference: {fileID: 0}
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
@@ -1830,7 +1831,7 @@ PrefabInstance:
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -45.97
+      value: -53.28
       objectReference: {fileID: 0}
     - target: {fileID: 4908821504218068744, guid: 032fa358349a3bc94991e73e80a1d125,
         type: 3}
