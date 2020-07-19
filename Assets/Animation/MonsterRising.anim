@@ -149,14 +149,14 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 6.4666667
+  - time: 6.266667
     functionName: AddSelfToLureList
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 6.516667
+  - time: 6.4
     functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
