@@ -470,10 +470,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HamSpeed: 3
   HamBounce: 1
-  diamante: {fileID: 0}
+  diamante: {fileID: 1100671804131123683, guid: 62f5c0e8a92bbbbf8b608cd647a1fbc6,
+    type: 3}
   lurePoint: {x: 0, y: 0, z: 0}
   turnSpeed: 0
   timeStamp: 0
+  anim: {fileID: 167829565738368783}
   hungerTimer: 0
   luredTimer: 0
   wrangledTimer: 10
