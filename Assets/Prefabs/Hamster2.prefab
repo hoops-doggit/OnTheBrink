@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 4908821503595233493}
   - component: {fileID: 4908821503595233492}
   - component: {fileID: 4908821503595233495}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HamsterBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,9 +363,9 @@ GameObject:
   - component: {fileID: 4908821504218068746}
   - component: {fileID: 4908821504218068749}
   - component: {fileID: 4908821504218068747}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hamster2
-  m_TagString: Untagged
+  m_TagString: hampster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -432,7 +432,8 @@ MonoBehaviour:
   diamante: {fileID: 0}
   lurePoint: {x: 0, y: 0, z: 0}
   turnSpeed: 0
-  hungerTimer: 5
+  timeStamp: 0
+  hungerTimer: 0
   luredTimer: 0
   wrangledTimer: 10
   boredTimer: 8

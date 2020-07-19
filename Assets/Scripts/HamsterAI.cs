@@ -15,8 +15,10 @@ public class HamsterAI : MonoBehaviour
     private Vector3 smoothDampVelocityREF;
     private Transform lookTransform;
     public float turnSpeed;    
+    public float timeStamp;
+    public Animator anim;
     
-    public float hungerTimer = 5f; 
+    public float hungerTimer = 0f; 
     public float luredTimer = 0f; 
     public float wrangledTimer = 10f;
     public float boredTimer = 8f;
@@ -28,6 +30,8 @@ public class HamsterAI : MonoBehaviour
         myState = State.lured;
         rb = GetComponent<Rigidbody>();
         lurePoint = LurePoint();
+        luredTimer = Random.Range(5f,10f);
+        //anim = GetComponent<Animator> ();
     }
 
     public Vector3 LurePoint()
@@ -57,23 +61,25 @@ public class HamsterAI : MonoBehaviour
 // State hungry, but not lured        
         if (luredTimer == 0f && myState == State.hungry)
         {
+            anim.enabled = true;
             lurePoint = LurePoint();
             myState = State.lured;
             randSeed = Random.Range(1,4);
-            hungerTimer = 5f;
+            hungerTimer = 25f;
         }
 // State bored, but not eating        
         if (boredTimer == 0f && myState == State.bored)
         {
-            myState = State.eating;
-            // turn off run animation
-            eatingTimer = 10f;
+            myState = State.lured;
+            anim.enabled = false;
+            luredTimer = 10f;
         }
 // State wrangled, but not hungry        
         if (wrangledTimer == 0f && myState == State.wrangled)
         {
-            myState = State.hungry;
-            luredTimer = 10f;
+            myState = State.eating;
+            BurstOfSpeed();
+            eatingTimer = 5f;
         }
 // State eating, but not bored        
         if (eatingTimer == 0f && myState == State.eating)
@@ -109,10 +115,10 @@ public class HamsterAI : MonoBehaviour
                 transform.LookAt(lookTransform);
                 break;
             case State.wrangled:
-                // stop moving
+                NormalSpeed();
                 break;
             case State.bored:
-                // look for grass
+                // stop moving
                 break;
             default:
                 break;
@@ -132,7 +138,19 @@ public class HamsterAI : MonoBehaviour
     public void Wrangled()
     {
         myState = State.wrangled;
-        // Will wait ten seconds and then remove parent and escape?
-        wrangledTimer = 10f;
+        // Will wait five seconds and then remove parent and escape?
+        wrangledTimer = 5f;
+    }
+    
+    private void BurstOfSpeed()
+    {
+
+            this.HamSpeed *= 2f;
+
+    }
+    
+    private void NormalSpeed()
+    {
+        this.HamSpeed = 3f;
     }
 }

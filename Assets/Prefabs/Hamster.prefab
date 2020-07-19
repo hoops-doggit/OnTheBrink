@@ -473,7 +473,8 @@ MonoBehaviour:
   diamante: {fileID: 0}
   lurePoint: {x: 0, y: 0, z: 0}
   turnSpeed: 0
-  hungerTimer: 5
+  timeStamp: 0
+  hungerTimer: 0
   luredTimer: 0
   wrangledTimer: 10
   boredTimer: 8
