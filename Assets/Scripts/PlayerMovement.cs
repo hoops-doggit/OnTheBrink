@@ -260,6 +260,11 @@ public class PlayerMovement : MonoBehaviour
             lookTarget.transform.SetPositionAndRotation(MouseInput.instance.mousePointTransform.position, MouseInput.instance.mousePointTransform.rotation);
             transform.LookAt(lookTarget.transform);
         }
+
+        if(transform.position.y < -2)
+        {
+            GamePauseMenu.instance.ResetScene();
+        }
         
         switch (groundState)
         {

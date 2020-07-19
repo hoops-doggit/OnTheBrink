@@ -40,9 +40,9 @@ public class MouseInput : MonoBehaviour
 
         Ray ray = gameCameraCam.ScreenPointToRay(mouse);
 
-        //LayerMask lm = (1 << LayerMask.NameToLayer("default"));
+        LayerMask lm = (1 << LayerMask.NameToLayer("ground"));
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, lm ))
         {
             mousePointTransform.transform.position = hit.point;
         }

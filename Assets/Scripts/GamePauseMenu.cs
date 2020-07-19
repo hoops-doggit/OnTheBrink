@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GamePauseMenu : MonoBehaviour
 {
+
+    public static GamePauseMenu instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     public GameObject pauseMenu;
 
     public void TurnOnPauseMenu()
@@ -22,6 +29,11 @@ public class GamePauseMenu : MonoBehaviour
     public void ResetScene()
     {
         SceneManager.LoadScene(1);
+    }
+
+    private void Start()
+    {
+        TurnOnPauseMenu();
     }
 
 

@@ -23,6 +23,8 @@ public class HamsterAI : MonoBehaviour
     public float wrangledTimer = 10f;
     public float boredTimer = 8f;
     public float eatingTimer = 4f;
+
+ 
     
     void Awake()
     {
@@ -33,6 +35,9 @@ public class HamsterAI : MonoBehaviour
         luredTimer = Random.Range(5f,10f);
         //anim = GetComponent<Animator> ();
     }
+
+
+
 
     public Vector3 LurePoint()
     {
@@ -118,7 +123,7 @@ public class HamsterAI : MonoBehaviour
                 transform.LookAt(lookTransform);
                 break;
             case State.wrangled:
-                NormalSpeed();
+                //NormalSpeed();
                 break;
             case State.bored:
                 // stop moving
@@ -144,6 +149,11 @@ public class HamsterAI : MonoBehaviour
         myState = State.wrangled;
         // Will wait five seconds and then remove parent and escape?
         wrangledTimer = 5f;
+    }
+
+    public void UnWrangleHampster()
+    {
+
     }
     
     private void BurstOfSpeed()

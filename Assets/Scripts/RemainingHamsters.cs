@@ -13,15 +13,14 @@ public class RemainingHamsters : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
 
-    private void Start()
-    {
-        foreach(HamsterAI h in hamsters)
+        foreach (HamsterAI h in hamsters)
         {
             remainingHamsters++;
         }
     }
+
+
 
     public void RemoveHamster()
     {

@@ -12,14 +12,16 @@ public class ContainerOfEverything : MonoBehaviour
     public GameObject gameCam;
     public Text scoreText;
 
-
     [Header("Monster Stuff")]
     public GameObject[] monsters;
     public List<GameObject> mon;
     public float minTime;
     public float maxTime;
 
-
+    [Header("End game stuff")]
+    public GameObject endGameScreen;
+    public bool endGameStarted = true;
+    public Text endGameTextBox;
 
 
     private void Awake()
@@ -62,9 +64,26 @@ public class ContainerOfEverything : MonoBehaviour
         }
     }
 
+    public void EndGameScene()
+    {
+        endGameTextBox.text = "You harvested " + ScoreManager.instance.score + " gems from your hamsters while they lived";
+        endGameScreen.SetActive(true);
+        endGameStarted = true;
+    }
+
+    IEnumerator AnnoyingMenuWorkAround()
+    {
+        yield return new WaitForSeconds(3);
+        endGameStarted = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if(ScoreManager.instance.hampsters == 0 && endGameStarted == false)
+        {
+            EndGameScene();
+        }
     
 
 

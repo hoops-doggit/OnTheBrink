@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     private void Update()
     {
         hampsters = RemainingHamsters.instance.remainingHamsters;
-        ContainerOfEverything.instance.scoreText.text = score + "gems,  " + hampsters.ToString()+" hamsters";
+        ContainerOfEverything.instance.scoreText.text = score + " gems,  " + hampsters.ToString()+" hamsters";
 
     }
 

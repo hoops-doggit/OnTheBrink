@@ -1404,6 +1404,9 @@ GameObject:
   - component: {fileID: 153407791}
   - component: {fileID: 153407792}
   - component: {fileID: 153407793}
+  - component: {fileID: 3585721596974373845}
+  - component: {fileID: 6541328726190563321}
+  - component: {fileID: 153407795}
   m_Layer: 0
   m_Name: ContainerOfEverything
   m_TagString: Untagged
@@ -1456,6 +1459,8 @@ MonoBehaviour:
   mon: []
   minTime: 5
   maxTime: 10
+  endGameScreen: {fileID: 0}
+  endGameTextBox: {fileID: 0}
 --- !u!114 &153407789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,6 +1525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  hampsters: 0
 --- !u!114 &153407793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1534,3 +1540,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentlyActiveLures: []
   numberOfActiveLures: 0
+--- !u!114 &3585721596974373845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909935752155091740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95ff05ec058647bb904b932e3ecc03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+--- !u!114 &6541328726190563321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909935752155091740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5fb35c1a08af7c0937111146520e5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &153407795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909935752155091740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702d5eef3d034fddb362841a5cd0d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hamsters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  remainingHamsters: 0
