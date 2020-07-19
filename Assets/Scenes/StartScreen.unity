@@ -1502,30 +1502,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &4908821503695595745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4908821503695595750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deda517c8174202d7be747c9028e26a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HamSpeed: 0
-  HamBounce: 0
-  diamante: {fileID: 0}
-  lurePoint: {x: 0, y: 0, z: 0}
-  turnSpeed: 0
-  timeStamp: 0
-  anim: {fileID: 0}
-  hungerTimer: 5
-  luredTimer: 0
-  wrangledTimer: 10
-  boredTimer: 8
-  eatingTimer: 4
 --- !u!4 &4908821503695595746
 Transform:
   m_ObjectHideFlags: 0
@@ -1533,15 +1509,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4908821503695595750}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: -0.00000004759559, y: 0.9168374, z: 1.5228685e-17, w: -0.39926082}
+  m_LocalPosition: {x: 0.1, y: 2.81, z: 1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4908821504117153592}
   - {fileID: 829688295}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 227.064, z: 0}
 --- !u!1 &4908821503695595750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,7 +1529,6 @@ GameObject:
   - component: {fileID: 4908821503695595746}
   - component: {fileID: 4908821503695595744}
   - component: {fileID: 4908821503695595751}
-  - component: {fileID: 4908821503695595745}
   m_Layer: 0
   m_Name: Hamster2
   m_TagString: Untagged
@@ -1585,7 +1560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4908821504117153596}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 1.845, y: 0, z: -1.717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7518413033004181284}
