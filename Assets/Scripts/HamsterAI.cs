@@ -10,7 +10,7 @@ public class HamsterAI : MonoBehaviour
     public float HamBounce = 1f;
     private int randSeed = 0; 
     public Transform diamante;
-    private State myState;
+    [SerializeField]private State myState;
     public Vector3 lurePoint;
     private Vector3 smoothDampVelocityREF;
     private Transform lookTransform;
@@ -23,10 +23,14 @@ public class HamsterAI : MonoBehaviour
     public float wrangledTimer = 10f;
     public float boredTimer = 8f;
     public float eatingTimer = 4f;
+
+    public GameObject lookTargetSphere;
+    public GameObject lureTargetSphere;
     
-    void Awake()
+    void Start()
     {
         lookTransform = new GameObject().transform;
+        lookTransform.SetParent(null);
         myState = State.lured;
         rb = GetComponent<Rigidbody>();
         lurePoint = LurePoint();
@@ -34,7 +38,7 @@ public class HamsterAI : MonoBehaviour
         //anim = GetComponent<Animator> ();
     }
 
-    public Vector3 LurePoint()
+    public Vector3 RandomPoint()
     {
         Vector3 lureP = new Vector3
         {
@@ -45,9 +49,35 @@ public class HamsterAI : MonoBehaviour
         return lureP;
     }
 
+    public Vector3 LurePoint()
+    {
+        Vector3 lureP = Vector3.one;
+        if(LureManager.instance.numberOfActiveLures > 0)
+        {
+            var lures = LureManager.instance.currentlyActiveLures;
+
+            lureP = LureManager.instance.currentlyActiveLures[Random.Range(0, lures.Count)].transform.position;
+            lureP.y = 0;
+        }
+        Debug.Log(lureP);
+
+        lureTargetSphere.transform.position = lureP;
+
+        return lureP;
+    }
+
     void Update()
     {
-// Manual poop
+
+
+        if(myState == State.lured && (lurePoint - transform.position).magnitude < 1)
+        {
+            myState = State.hungry;
+            luredTimer = 5f;
+            Debug.Log("I gone and done");
+        }
+
+        // Manual poop
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PoopDiamond();
@@ -78,7 +108,7 @@ public class HamsterAI : MonoBehaviour
         if (wrangledTimer == 0f && myState == State.wrangled)
         {
             myState = State.eating;
-            BurstOfSpeed();
+            //BurstOfSpeed();
             eatingTimer = 5f;
         }
 // State eating, but not bored        
@@ -86,7 +116,7 @@ public class HamsterAI : MonoBehaviour
         {
             PoopDiamond();
             myState = State.bored;
-            boredTimer = 7f;   
+            boredTimer = 7f;
         }
 // This block counts down all the timers        
         hungerTimer = Mathf.Max(0, hungerTimer - Time.deltaTime);
@@ -105,6 +135,10 @@ public class HamsterAI : MonoBehaviour
         {
             case State.lured:
                 // run at lure
+                lookTransform.position = Vector3.SmoothDamp(lookTransform.position, lurePoint, ref smoothDampVelocityREF, turnSpeed);
+                transform.LookAt(lookTransform);
+                lookTargetSphere.transform.position = lookTransform.position;
+
                 rb.MovePosition(transform.position + ((transform.forward * HamSpeed) + (transform.up * HamBounce)) * Time.deltaTime);
 //                rb.AddRelativeForce(Vector3.forward * HamSpeed, ForceMode.Force);
                 //rb.AddRelativeForce(Vector3.forward * HamBounce, ForceMode.Force);
@@ -141,7 +175,14 @@ public class HamsterAI : MonoBehaviour
         // Will wait five seconds and then remove parent and escape?
         wrangledTimer = 5f;
     }
-    
+
+    public void Eating()
+    {
+        myState = State.eating;
+        eatingTimer = 5f;
+
+    }
+
     private void BurstOfSpeed()
     {
 

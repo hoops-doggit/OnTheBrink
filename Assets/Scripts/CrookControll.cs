@@ -55,7 +55,6 @@ public class CrookControll : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
 
 
         if(other.tag == "hampster" && !wrangling)
