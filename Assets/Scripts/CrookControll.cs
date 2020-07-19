@@ -59,11 +59,10 @@ public class CrookControll : MonoBehaviour
 
         if(other.tag == "hampster" && !wrangling)
         {
-            if (!wrangling)
-            {
-                other.GetComponent<HamsterAI>().Wrangled();
-                CrookHampster(other.gameObject);
-            }
+
+            other.GetComponent<HamsterAI>().Wrangled();
+            CrookHampster(other.gameObject);
+
 
         }
     }
@@ -71,13 +70,14 @@ public class CrookControll : MonoBehaviour
     public void CrookHampster(GameObject _hamp)
     {
         currentlyWrangledHamp = _hamp;
+        currentlyWrangledHamp.layer = 10;
         //currentlyWrangledHamp.transform.position = crookedHingePosition.transform.localPosition;
         currentlyWrangledHamp.AddComponent<HingeJoint>();
         HingeJoint hj = currentlyWrangledHamp.GetComponent<HingeJoint>();
         hj.connectedBody = rb;
         hj.anchor = Vector3.zero;
 
-        currentlyWrangledHamp.layer = 10; //crookedHampster physics layer
+         //crookedHampster physics layer
 
         wrangling = true;
     }

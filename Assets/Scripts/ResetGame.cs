@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ResetGame : MonoBehaviour
 {
-    void Update()
+
+    public void ResetWholeGame()
     {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("StartScreen");
-        }
+        SceneManager.LoadScene(0);
     }
+
 }

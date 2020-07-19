@@ -12,11 +12,13 @@ public class ContainerOfEverything : MonoBehaviour
     public GameObject gameCam;
     public Text scoreText;
 
+
     [Header("Monster Stuff")]
     public GameObject[] monsters;
     public List<GameObject> mon;
     public float minTime;
     public float maxTime;
+
 
 
 

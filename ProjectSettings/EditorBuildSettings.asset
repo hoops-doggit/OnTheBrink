@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: fb57ee401e6b787fb9bf4692fa1179be
   - enabled: 1
-    path: Assets/MacScene.unity
+    path: Assets/Scenes/MacScene.unity
     guid: 1889f8f49307e418f80867554c0fdcf0
   - enabled: 1
     path: Assets/Scenes/GameScene.unity

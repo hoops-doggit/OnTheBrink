@@ -135,6 +135,7 @@ public class HamsterAI : MonoBehaviour
     
     void DestroyHamster()
     {
+        RemainingHamsters.instance.RemoveHamster();
         Destroy(gameObject);
     }
     
