@@ -23,6 +23,8 @@ public class ContainerOfEverything : MonoBehaviour
     public bool endGameStarted = true;
     public Text endGameTextBox;
 
+    private float timer = 10;
+
 
     private void Awake()
     {
@@ -64,6 +66,14 @@ public class ContainerOfEverything : MonoBehaviour
         }
     }
 
+    private void StartCheckingHamsters()
+    {
+        if (ScoreManager.instance.hampsters == 0)
+        {
+            EndGameScene();
+        }
+    }
+
     public void EndGameScene()
     {
         endGameTextBox.text = "You harvested " + ScoreManager.instance.score + " gems from your hamsters while they lived";
@@ -80,9 +90,11 @@ public class ContainerOfEverything : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ScoreManager.instance.hampsters == 0 && endGameStarted == false)
+
+        timer -= Time.deltaTime;
+        if(timer < 0)
         {
-            EndGameScene();
+            StartCheckingHamsters();
         }
     
 
